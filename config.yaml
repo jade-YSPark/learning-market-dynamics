@@ -1,0 +1,87 @@
+# API Keys & Configuration
+# -----------------------------------------------------------------
+# API 키는 .env 파일에서 로드됩니다.
+# 이 파일은 각 API의 non-secret 파라미터와 자산 목록, 전략 파라미터를 관리합니다.
+# -----------------------------------------------------------------
+
+# config.yaml
+# API 키는 .env 파일에서 로드됩니다.
+# 이 파일은 각 데이터 소스의 활성화 여부, non-secret 파라미터, 전략 파라미터를 관리합니다.
+
+alpaca:
+  enabled: true
+  paper: true # 실거래를 원할 경우 false로 변경
+
+coinbase:
+  enabled: false        # ← Coinbase API 사용 중지
+
+crypto_public:
+  enabled: true         # ← 공개 엔드포인트 사용 (키 불필요)
+  exchange: "binance"   # 또는 "bybit", "okx"
+  symbols:
+    - "BTC/USDT"
+    - "ETH/USDT"
+  interval: "1h"
+
+yfinance:
+  enabled: true
+  symbols:
+    - "BTC-USD"
+    - "ETH-USD"
+    - "SPY"
+  interval: "1h"
+
+defillama:
+  enabled: true
+
+the_graph:
+  enabled: false # 현재 워크플로우에서는 사용하지 않음
+
+# Database Configuration
+database:
+  path: "sqlite:///market_data.db" # 데이터 저장을 위한 SQLite 데이터베이스 경로
+
+# Strategy Parameters
+strategies:
+  sma:
+    short_window: 20
+    long_window: 50
+  mean_reversion:
+    window: 21
+    entry_threshold: 2.0 # 진입 기준 (n 표준편차)
+    exit_threshold: 0.5  # 청산 기준 (n 표준편차)
+
+# Database Configuration
+database:
+  path: "sqlite:///market_data.db" # 데이터 저장을 위한 SQLite 데이터베이스 경로
+
+# Asset & Ticker Configuration
+assets:
+  # TradFi (Alpaca) - 미국 주식/ETF
+  tradfi:
+    - "SPY"   # S&P 500 ETF
+    - "AGG"   # U.S. Aggregate Bond ETF
+    - "GLD"   # Gold ETF
+    - "QQQ"   # Nasdaq 100 ETF
+  
+  # Crypto (Coinbase) - 암호화폐
+  crypto:
+    - "BTC-USD"
+    - "ETH-USD"
+
+  # Macro (FRED) - 거시경제 지표 Series ID
+  macro:
+    - "DFF"         # Federal Funds Effective Rate (일별)
+    - "SOFR"        # Secured Overnight Financing Rate (일별)
+    - "RRPONTSYD"   # Overnight Reverse Repurchase Agreements: Treasury Securities (일별)
+    - "DTB3"        # 3-Month Treasury Bill Secondary Market Rate (일별)
+
+# Strategy Parameters
+strategies:
+  sma:
+    short_window: 20
+    long_window: 50
+  mean_reversion:
+    window: 21
+    entry_threshold: 2.0 # 진입 기준 (n 표준편차)
+    exit_threshold: 0.5  # 청산 기준 (n 표준편차)

@@ -1,0 +1,20 @@
+# Core Libraries
+pandas
+numpy
+requests
+PyYAML
+python-dotenv
+
+# Data Sources
+alpaca-trade-api
+ccxt
+yfinance
+
+# Data Visualization & Notebooks
+matplotlib
+seaborn
+jupyter
+ipykernel
+
+# Backtesting (optional, for later use)
+# backtesting
