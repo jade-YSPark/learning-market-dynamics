@@ -25,7 +25,7 @@ API_KEY = os.getenv("ALPACA_API_KEY")
 SECRET_KEY = os.getenv("ALPACA_SECRET_KEY")
 
 # config.yaml에서 설정값 가져오기
-PAPER = config['alpaca']['paper']
+PAPER = config['collectors']['alpaca']['paper']
 ASSETS = config['assets']['tradfi']
 
 # API 키 존재 여부 확인
@@ -66,7 +66,7 @@ def collect():
     
     # 1. 데이터 가져오기
     # config.yaml에 정의된 TradFi 자산 목록으로 2023년 1분기 데이터 가져오기
-    tradfi_data = get_tradfi_data(ASSETS, timeframe='1Hour', start_date="2023-01-01", end_date="2023-03-31")
+    tradfi_data = get_tradfi_data(ASSETS, timeframe='1Hour', start_date="2025-09-01", end_date="2025-10-29")
 
     if tradfi_data:
         # 2. 가져온 데이터를 데이터베이스에 저장

@@ -15,8 +15,8 @@ CONFIG_PATH = project_root / "config.yaml"
 with open(CONFIG_PATH, 'r') as f:
     config = yaml.safe_load(f)
 
-SYMBOLS = config['yfinance']['symbols']
-INTERVAL = config['yfinance']['interval']
+SYMBOLS = config['collectors']['yfinance']['symbols']
+INTERVAL = config['collectors']['yfinance']['interval']
 
 def get_yfinance_data(symbols, interval='1h', start=None, end=None, period='1mo'):
     """
@@ -74,7 +74,7 @@ def collect():
     
     # 1. 데이터 가져오기
     # config.yaml에 정의된 자산 목록으로 데이터 가져오기
-    data_dict = get_yfinance_data(SYMBOLS, interval=INTERVAL, start="2023-01-01", end="2023-03-31")
+    data_dict = get_yfinance_data(SYMBOLS, interval=INTERVAL, start="2025-09-01", end="2025-10-29")
 
     if data_dict:
         # 2. 가져온 데이터를 데이터베이스에 저장

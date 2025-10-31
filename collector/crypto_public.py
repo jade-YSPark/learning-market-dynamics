@@ -16,9 +16,9 @@ CONFIG_PATH = project_root / "config.yaml"
 with open(CONFIG_PATH, 'r') as f:
     config = yaml.safe_load(f)
 
-EXCHANGE = config['crypto_public']['exchange']
-SYMBOLS = config['crypto_public']['symbols']
-INTERVAL = config['crypto_public']['interval']
+EXCHANGE = config['collectors']['crypto_public']['exchange']
+SYMBOLS = config['collectors']['crypto_public']['symbols']
+INTERVAL = config['collectors']['crypto_public']['interval']
 
 def get_public_crypto_data(exchange_name, symbols, timeframe='1h', since=None, limit=100):
     """
