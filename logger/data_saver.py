@@ -49,7 +49,11 @@ def save_price_data(data_dict):
             'time': 'timestamp',
             'index': 'timestamp'
         }, inplace=True)
-        
+
+        # 타임스탬프를 문자열로 변환 (YYYY-MM-DD HH:MM:SS 형식)
+        if pd.api.types.is_datetime64_any_dtype(df_copy['timestamp']):
+            df_copy['timestamp'] = df_copy['timestamp'].dt.strftime('%Y-%m-%d %H:%M:%S')
+
         # 필요한 컬럼만 선택
         records_to_insert = df_copy[['timestamp', 'symbol', 'open', 'high', 'low', 'close', 'volume']].to_records(index=False).tolist()
 

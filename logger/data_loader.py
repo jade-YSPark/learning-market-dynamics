@@ -38,15 +38,13 @@ def load_price_data(symbols, start_date=None, end_date=None):
     params = []
 
     if start_date:
-        start_date_ts = pd.to_datetime(start_date).value
         query += " AND timestamp >= ?"
-        params.append(start_date_ts)
+        params.append(start_date)
     if end_date:
         if len(end_date) == 10: # YYYY-MM-DD
             end_date += ' 23:59:59'
-        end_date_ts = pd.to_datetime(end_date).value
         query += " AND timestamp <= ?"
-        params.append(end_date_ts)
+        params.append(end_date)
     
     query += " ORDER BY timestamp ASC"
 
